@@ -1,35 +1,39 @@
-import { fetchCountries } from './fetch-countries.js';
-import './css/styles.css';
+import { fetchRequest } from './fetchRequest.js';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 
 const DEBOUNCE_DELAY = 300;
 
-// const inputCountry = document.querySelector('#search-box');
-// const countryList = document.querySelector('.country-list');
-// const countryInfo = document.querySelector('.country-info');
+const searchForm = document.querySelector('#search-form');
+const inputSearch = document.querySelector('[name="searchQuery"]');
 
-// inputCountry.addEventListener(
-//   'input',
-//   debounce(onInputEnteredValue, DEBOUNCE_DELAY)
-// );
+inputSearch.addEventListener(
+  'input',
+  debounce(onInputEnteredValue, DEBOUNCE_DELAY)
+);
 
-// function onInputEnteredValue(evt) {
-//   const inputValue = evt.target.value.trim();
-//   // console.log(inputValue);
+searchForm.addEventListener('submit', onFormSubmit);
 
-//   if (inputValue === '') {
-//     clearOutput();
-//     // Notiflix.Report.warning(
-//     //   'Your request is EMPTY',
-//     //   'Please enter a more specific name.',
-//     //   'OK'
-//     // );
-//     return;
-//   }
+function onInputEnteredValue(evt) {
+  const inputValue = evt.target.value.trim();
+  console.log(inputValue);
 
-//   fetchCountries(inputValue).then(createMarkup).catch(catchError);
-// }
+  if (inputValue === '') {
+    clearOutput();
+    Notiflix.Report.warning(
+      'Your request is EMPTY',
+      'Please enter a more specific request.',
+      'OK'
+    );
+    return;
+  }
+}
+
+function onFormSubmit(evt) {
+  evt.preventDefault();
+
+  fetchRequest(inputValue).then(createMarkup).catch(catchError);
+}
 
 // function createMarkup(countries) {
 //   clearOutput();
@@ -79,10 +83,9 @@ const DEBOUNCE_DELAY = 300;
 //   }
 // }
 
-// function clearOutput() {
-//   countryList.innerHTML = '';
-//   countryInfo.innerHTML = '';
-// }
+function clearOutput() {
+  inputValue = '';
+}
 
 // function catchError(error) {
 //   Notiflix.Report.warning(
