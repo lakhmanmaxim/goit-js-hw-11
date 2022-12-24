@@ -7,7 +7,7 @@ const DEBOUNCE_DELAY = 300;
 const searchForm = document.querySelector('#search-form');
 const inputSearch = document.querySelector('[name="searchQuery"]');
 
-const ApiService = new ApiService();
+const ApiRequest = new ApiService();
 
 inputSearch.addEventListener(
   'input',
@@ -38,7 +38,7 @@ function onFormSubmit(evt) {
   let inputValue = evt.currentTarget.elements.searchQuery.value;
   console.log(inputValue);
 
-  ApiService.fetchRequest(inputValue); //.then(console.log); //then(createMarkup).catch(catchError);
+  ApiRequest.fetchRequest(inputValue); //.then(console.log); //then(createMarkup).catch(catchError);
 }
 
 function clearOutput() {
