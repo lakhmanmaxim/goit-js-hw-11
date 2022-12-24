@@ -9,8 +9,6 @@ const inputSearch = document.querySelector('[name="searchQuery"]');
 
 const ApiService = new ApiService();
 
-let inputValue = '';
-
 inputSearch.addEventListener(
   'input',
   debounce(onInputEnteredValue, DEBOUNCE_DELAY)
@@ -19,7 +17,7 @@ inputSearch.addEventListener(
 searchForm.addEventListener('submit', onFormSubmit);
 
 function onInputEnteredValue(evt) {
-  inputValue = evt.target.value;
+  const inputValue = evt.target.value;
   // console.log(inputValue);
 
   if (inputValue === '') {
@@ -37,7 +35,7 @@ function onInputEnteredValue(evt) {
 function onFormSubmit(evt) {
   evt.preventDefault();
 
-  inputValue = evt.currentTarget.elements.searchQuery.value;
+  let inputValue = evt.currentTarget.elements.searchQuery.value;
   console.log(inputValue);
 
   ApiService.fetchRequest(inputValue); //.then(console.log); //then(createMarkup).catch(catchError);
