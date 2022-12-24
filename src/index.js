@@ -19,7 +19,7 @@ inputSearch.addEventListener(
 searchForm.addEventListener('submit', onFormSubmit);
 
 function onInputEnteredValue(evt) {
-  // inputValue = evt.target.value;
+  inputValue = evt.target.value;
   // console.log(inputValue);
 
   if (inputValue === '') {
