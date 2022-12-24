@@ -1,4 +1,4 @@
-import ApiService from './apiService.js';
+import { ApiService } from './apiService.js';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 
