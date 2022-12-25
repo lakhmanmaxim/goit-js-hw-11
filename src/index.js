@@ -171,7 +171,7 @@ function createTemplate(cards = []) {
         <b>Downloads: ${card.downloads}</b>
       </p>
     </div>
-  </div>;
+  </div>
   `
     )
     .join('');
