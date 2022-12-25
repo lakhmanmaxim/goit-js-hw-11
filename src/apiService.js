@@ -19,7 +19,7 @@ export class ApiService {
     );
 
     const data = response.data;
-    // console.log(data);
+    console.log(data);
 
     return data;
   }

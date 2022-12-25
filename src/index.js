@@ -100,9 +100,9 @@ async function fetchPicture() {
 
       Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       createMarkup(data.hits);
+      loadMoreButton.show();
       apiService.incrementPage();
       lightbox.refresh();
-      loadMoreButton.show();
 
       // console.log(data);
       const totalPage = data.totalHits / 40;
@@ -110,7 +110,7 @@ async function fetchPicture() {
 
       if (this.page >= totalPage) {
         loadMoreButton.hide();
-        Notiflix.Report.failure(
+        Notiflix.Report.warning(
           'Hello...',
           'We are sorry, but you are have reached the end of search results.',
           'OK'
