@@ -99,24 +99,25 @@ async function fetchPicture() {
       }
 
       Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
+      apiService.incrementPage();
       createMarkup(data.hits);
       loadMoreButton.show();
-      apiService.incrementPage();
+
       lightbox.refresh();
 
       // console.log(data);
-      const totalPage = data.totalHits / 40;
-      console.log('fetchPicture ~ totalPage', totalPage);
+      // const totalPage = data.totalHits / 40;
+      // console.log('fetchPicture ~ totalPage', totalPage);
 
-      if (this.page >= totalPage) {
-        loadMoreButton.hide();
-        Notiflix.Report.warning(
-          'Hello...',
-          'We are sorry, but you are have reached the end of search results.',
-          'OK'
-        );
-        return;
-      }
+      // if (this.page >= totalPage) {
+      //   loadMoreButton.hide();
+      //   Notiflix.Report.warning(
+      //     'Hello...',
+      //     'We are sorry, but you are have reached the end of search results.',
+      //     'OK'
+      //   );
+      //   return;
+      // }
     })
     .catch(error => {
       return error;
@@ -176,3 +177,20 @@ function createTemplate(cards = []) {
     )
     .join('');
 }
+
+// window.addEventListener('scroll', () => {
+//   const docRect = document.documentElement.getBoundingClientRect();
+
+//   if (docRect.bottom < document.documentElement.clientHeight + 500) {
+//     // const { height: cardHeight } = document
+//     //   .querySelector('.gallery')
+//     //   .firstElementChild.getBoundingClientRect();
+
+//     // window.scrollBy({
+//     //   top: cardHeight * 3,
+//     //   behavior: 'smooth',
+//     // });
+
+//     onLoadMore();
+//   }
+// });

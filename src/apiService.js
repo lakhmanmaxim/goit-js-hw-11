@@ -20,7 +20,7 @@ export class ApiService {
 
     const data = response.data;
     console.log(data);
-
+    this.incrementPage();
     return data;
   }
 
