@@ -102,6 +102,7 @@ async function fetchPicture() {
       createMarkup(data.hits);
       apiService.incrementPage();
       lightbox.refresh();
+      loadMoreButton.show();
 
       // console.log(data);
       const totalPage = data.totalHits / 40;
@@ -116,7 +117,6 @@ async function fetchPicture() {
         );
         return;
       }
-      loadMoreButton.show();
     })
     .catch(error => {
       return error;
